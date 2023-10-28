@@ -12,7 +12,9 @@ class bitcoin extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 theme: ThemeData.dark().copyWith(
   primaryColor: Colors.lightBlue,
+
   scaffoldBackgroundColor: Colors.white,
+  appBarTheme: AppBarTheme(backgroundColor: Colors.lightBlue),
 
 ),
       home: price_screen(),

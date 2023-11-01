@@ -8,6 +8,7 @@ class price_screen extends StatefulWidget {
 }
 
 class _price_screenState extends State<price_screen> {
+  String drope_down_menu= "RUP";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,8 +35,22 @@ class _price_screenState extends State<price_screen> {
             height: 150,
             padding: EdgeInsets.only(bottom: 30),
             color: Colors.lightBlue,
-            child: null,
+
             alignment: Alignment.center,
+
+            child: DropdownButton<String>(
+                value: drope_down_menu,
+                items: [
+
+              DropdownMenuItem(child:Text("USD") ,value: "USD",),
+              DropdownMenuItem(child: Text("AUD"),value: "AUD",),
+              DropdownMenuItem(child: Text("RUP"), value: "RUP",)
+            ],onChanged:(value){
+                  setState(() {
+                    drope_down_menu=value!;
+                  });
+
+            }),
           )
         ],
       ),

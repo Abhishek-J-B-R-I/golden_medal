@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'coin_data.dart';
 class price_screen extends StatefulWidget {
   const price_screen({super.key});
 
@@ -8,7 +8,28 @@ class price_screen extends StatefulWidget {
 }
 
 class _price_screenState extends State<price_screen> {
-  String drope_down_menu= "RUP";
+  String
+  drope_down_menu= "RUP";
+  /*DropdownMenuItem ddmil(List<String> cl){
+
+    for(String c in cl){
+
+     return  DropdownMenuItem(child: Text("$c"),value:"$c" ,);
+    }
+
+
+  }*/
+
+  List<DropdownMenuItem<String>> ddmil(){
+    List<DropdownMenuItem<String>> dropmenuitem=[];
+
+        for(int i=0;i<currency_list.length;i++){
+          String c= currency_list[i];
+         var currency= DropdownMenuItem(child: Text(c),value: c,);
+        dropmenuitem.add(currency);
+        }
+        return dropmenuitem;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,12 +61,15 @@ class _price_screenState extends State<price_screen> {
 
             child: DropdownButton<String>(
                 value: drope_down_menu,
-                items: [
-
+                items:ddmil()
+                // [
+/*
               DropdownMenuItem(child:Text("USD") ,value: "USD",),
               DropdownMenuItem(child: Text("AUD"),value: "AUD",),
-              DropdownMenuItem(child: Text("RUP"), value: "RUP",)
-            ],onChanged:(value){
+              DropdownMenuItem(child: Text("RUP"), value: "RUP",)*/
+                //ddmil(currency_list);
+            //]
+                ,onChanged:(value){
                   setState(() {
                     drope_down_menu=value!;
                   });

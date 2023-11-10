@@ -55,12 +55,12 @@ class _price_screenState extends State<price_screen> {
   return dropdownItems;
   }*/
 
-    List<DropdownMenuItem<String>> getDropdownItem(){
+   /* List<DropdownMenuItem<String>> getDropdownItem(){
       int i=0;
       List<DropdownMenuItem<String>> dropdownItems = [
         DropdownMenuItem(child:Text("RUP") ,value: "RUP",),
 
-        DropdownMenuItem(child:Text("${currency_list[i]}") ,value: "${currency_list[i]}",),
+       // DropdownMenuItem(child:Text("${currency_list[i]}") ,value: "${currency_list[i]}",),
       ];
       for(int i=0;i<currency_list.length;i++){
        // i=1;
@@ -71,11 +71,27 @@ class _price_screenState extends State<price_screen> {
         );}
 
       return dropdownItems;
-      }
-
+      }*/
+//c style for loop used here
   //  }
 
+  List<DropdownMenuItem<String>> getDropdownItem(){
+    int i=0;
+    List<DropdownMenuItem<String>> dropdownItems = [
+      DropdownMenuItem(child:Text("RUP") ,value: "RUP",),
 
+      // DropdownMenuItem(child:Text("${currency_list[i]}") ,value: "${currency_list[i]}",),
+    ];
+    for(String c in currency_list){
+      // i=1;
+      dropdownItems.add(DropdownMenuItem(
+        child: Text(c),
+        value: "$c",
+      )
+      );}
+
+    return dropdownItems;
+  }
 
 
 
@@ -130,3 +146,4 @@ class _price_screenState extends State<price_screen> {
     );
   }
 }
+//ios now

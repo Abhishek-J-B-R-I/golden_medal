@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'coin_data.dart';
+import 'package:flutter/cupertino.dart';
+
 class price_screen extends StatefulWidget {
   const price_screen({super.key});
 
@@ -8,8 +10,7 @@ class price_screen extends StatefulWidget {
 }
 
 class _price_screenState extends State<price_screen> {
-  String
-  drope_down_menu= "RUP";
+  String drope_down_menu = "RUP";
   /*DropdownMenuItem ddmil(List<String> cl){
 
     for(String c in cl){
@@ -32,8 +33,8 @@ class _price_screenState extends State<price_screen> {
   }*/
 
   //List<DropdownMenuItem<String>> getDropdownItem(){
-    //int i=0;
-    /*List<DropdownMenuItem<String>> dropdownItems = [
+  //int i=0;
+  /*List<DropdownMenuItem<String>> dropdownItems = [
       /*DropdownMenuItem(child:Text("${currency_list[i]}") ,value: "${currency_list[i]}",),
       //DropdownMenuItem(child:Text("${currency_list[1]}") ,value: "${currency_list[1]}",),
       //DropdownMenuItem(child:Text("${currency_list[1]}") ,value: "${currency_list[1]}",),
@@ -55,7 +56,7 @@ class _price_screenState extends State<price_screen> {
   return dropdownItems;
   }*/
 
-   /* List<DropdownMenuItem<String>> getDropdownItem(){
+  /* List<DropdownMenuItem<String>> getDropdownItem(){
       int i=0;
       List<DropdownMenuItem<String>> dropdownItems = [
         DropdownMenuItem(child:Text("RUP") ,value: "RUP",),
@@ -75,25 +76,36 @@ class _price_screenState extends State<price_screen> {
 //c style for loop used here
   //  }
 
-  List<DropdownMenuItem<String>> getDropdownItem(){
-    int i=0;
+  List<DropdownMenuItem<String>> getDropdownItem() {
+    int i = 0;
     List<DropdownMenuItem<String>> dropdownItems = [
-      DropdownMenuItem(child:Text("RUP") ,value: "RUP",),
+      DropdownMenuItem(
+        child: Text("RUP"),
+        value: "RUP",
+      ),
 
       // DropdownMenuItem(child:Text("${currency_list[i]}") ,value: "${currency_list[i]}",),
     ];
-    for(String c in currency_list){
+    for (String c in currency_list) {
       // i=1;
       dropdownItems.add(DropdownMenuItem(
         child: Text(c),
         value: "$c",
-      )
-      );}
+      ));
+    }
 
     return dropdownItems;
   }
 
+  List<Widget> ios_style() {
+    List<Text> l = [
 
+    ];
+    for (String i in currency_list) {
+      l.add(Text('$i'));
+    }
+    return l;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -105,41 +117,33 @@ class _price_screenState extends State<price_screen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
-
             padding: const EdgeInsets.fromLTRB(18, 18, 18, 18),
             child: Card(
               color: Colors.lightBlueAccent,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 15 , horizontal: 28),
-                child: Center(child: Text("1 BTC = ? USD", style: TextStyle(fontSize: 20, color: Colors.white),)),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 15, horizontal: 28),
+                child: Center(
+                    child: Text(
+                  "1 BTC = ? USD",
+                  style: TextStyle(fontSize: 20, color: Colors.white),
+                )),
               ),
-
             ),
           ),
           Container(
             height: 150,
             padding: EdgeInsets.only(bottom: 30),
             color: Colors.lightBlue,
-
             alignment: Alignment.center,
-
-            child: DropdownButton<String>(
-                value: drope_down_menu,
-                items:getDropdownItem()
-                // [
-/*
-              DropdownMenuItem(child:Text("USD") ,value: "USD",),
-              DropdownMenuItem(child: Text("AUD"),value: "AUD",),
-              DropdownMenuItem(child: Text("RUP"), value: "RUP",)*/
-                //ddmil(currency_list);
-            //]
-                ,onChanged:(value){
-                  setState(() {
-                    drope_down_menu=value!;
-                  });
-
-            }),
+            child: CupertinoPicker(
+                itemExtent: 32.0,
+                onSelectedItemChanged: (int value) {
+                  print(value);
+                },
+                children: ios_style()),
           )
         ],
       ),

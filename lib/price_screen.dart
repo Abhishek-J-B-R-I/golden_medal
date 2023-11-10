@@ -19,8 +19,8 @@ class _price_screenState extends State<price_screen> {
 
 
   }*/
-
-  List<DropdownMenuItem<String>> ddmil(){
+/*
+  List<DropdownMenuItem> ddmil(){
     List<DropdownMenuItem<String>> dropmenuitem=[];
 
         for(int i=0;i<currency_list.length;i++){
@@ -29,7 +29,56 @@ class _price_screenState extends State<price_screen> {
         dropmenuitem.add(currency);
         }
         return dropmenuitem;
+  }*/
+
+  //List<DropdownMenuItem<String>> getDropdownItem(){
+    //int i=0;
+    /*List<DropdownMenuItem<String>> dropdownItems = [
+      /*DropdownMenuItem(child:Text("${currency_list[i]}") ,value: "${currency_list[i]}",),
+      //DropdownMenuItem(child:Text("${currency_list[1]}") ,value: "${currency_list[1]}",),
+      //DropdownMenuItem(child:Text("${currency_list[1]}") ,value: "${currency_list[1]}",),
+/*DropdownMenuItem(child: Text("${currency_list[i]}"
+    ),value: "${currency_list[i]}");*/
+      DropdownMenuItem(child:Text("${currency_list[1]}") ,value: "${currency_list[1]}",),
+
+      DropdownMenuItem(child:Text("${currency_list[2]}") ,value: "${currency_list[2]}",),
+      DropdownMenuItem(child: Text("AUD"),value: "AUD",),
+      DropdownMenuItem(child: Text("RUP"), value: "RUP",)*/
+
+    ];
+  for(int i=0;i<currency_list.length;i++){
+
+
+
+    dropdownItems.add(DropdownMenuItem(child:Text("$i") ,value: "$i"));
   }
+  return dropdownItems;
+  }*/
+
+    List<DropdownMenuItem<String>> getDropdownItem(){
+      int i=0;
+      List<DropdownMenuItem<String>> dropdownItems = [
+        DropdownMenuItem(child:Text("RUP") ,value: "RUP",),
+
+        DropdownMenuItem(child:Text("${currency_list[i]}") ,value: "${currency_list[i]}",),
+      ];
+      for(int i=0;i<currency_list.length;i++){
+       // i=1;
+        dropdownItems.add(DropdownMenuItem(
+          child: Text("${currency_list[i]}"),
+          value: "${currency_list[i]}_$i",
+        )
+        );}
+
+      return dropdownItems;
+      }
+
+  //  }
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +110,7 @@ class _price_screenState extends State<price_screen> {
 
             child: DropdownButton<String>(
                 value: drope_down_menu,
-                items:ddmil()
+                items:getDropdownItem()
                 // [
 /*
               DropdownMenuItem(child:Text("USD") ,value: "USD",),

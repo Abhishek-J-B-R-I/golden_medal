@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'coin_data.dart';
 import 'package:flutter/cupertino.dart';
+import 'dart:io' show Platform;
 
 class price_screen extends StatefulWidget {
   const price_screen({super.key});
@@ -122,6 +123,17 @@ class _price_screenState extends State<price_screen> {
         children: l);
   }
 
+  Widget find_device(){
+    if(Platform.isAndroid){
+      return android_Device();
+    }
+    else if(Platform.isIOS){
+      return ios_device();
+    }
+    else{
+      return ios_device();
+    }
+  }
 
 
   @override
@@ -155,7 +167,7 @@ class _price_screenState extends State<price_screen> {
             padding: EdgeInsets.only(bottom: 30),
             color: Colors.lightBlue,
             alignment: Alignment.center,
-            child: ios_device(),
+            child: find_device(),
           )
         ],
       ),

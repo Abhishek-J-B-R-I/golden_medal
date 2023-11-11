@@ -97,7 +97,7 @@ class _price_screenState extends State<price_screen> {
     return dropdownItems;
   }
 
-  List<Widget> ios_style() {
+  List<Text> ios_style() {
     List<Text> l = [
 
     ];

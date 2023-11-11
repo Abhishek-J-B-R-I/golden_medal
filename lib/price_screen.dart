@@ -167,7 +167,11 @@ class _price_screenState extends State<price_screen> {
             padding: EdgeInsets.only(bottom: 30),
             color: Colors.lightBlue,
             alignment: Alignment.center,
-            child: find_device(),
+            child:
+            //easy way
+            (Platform.isAndroid)?android_Device():ios_device()
+            //find_device()
+            ,
           )
         ],
       ),

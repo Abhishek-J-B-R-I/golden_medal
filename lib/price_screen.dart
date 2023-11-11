@@ -75,8 +75,7 @@ class _price_screenState extends State<price_screen> {
       }*/
 //c style for loop used here
   //  }
-
-  List<DropdownMenuItem<String>> getDropdownItem() {
+  DropdownButton<String> android_Device(){
     int i = 0;
     List<DropdownMenuItem<String>> dropdownItems = [
       DropdownMenuItem(
@@ -94,18 +93,36 @@ class _price_screenState extends State<price_screen> {
       ));
     }
 
-    return dropdownItems;
+    return  DropdownButton<String>(
+        value: drope_down_menu,
+        items:dropdownItems
+
+        ,onChanged:(value){
+      setState(() {
+        drope_down_menu=value!;
+      });
+
+    });
   }
 
-  List<Text> ios_style() {
+
+  CupertinoPicker ios_device(){
     List<Text> l = [
 
     ];
     for (String i in currency_list) {
       l.add(Text('$i'));
     }
-    return l;
+
+    return CupertinoPicker(
+        itemExtent: 32.0,
+        onSelectedItemChanged: (int value) {
+          print(value);
+        },
+        children: l);
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -138,12 +155,7 @@ class _price_screenState extends State<price_screen> {
             padding: EdgeInsets.only(bottom: 30),
             color: Colors.lightBlue,
             alignment: Alignment.center,
-            child: CupertinoPicker(
-                itemExtent: 32.0,
-                onSelectedItemChanged: (int value) {
-                  print(value);
-                },
-                children: ios_style()),
+            child: ios_device(),
           )
         ],
       ),

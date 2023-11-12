@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'coin_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:io' show Platform;
+import 'api_file.dart';
 
 class price_screen extends StatefulWidget {
   const price_screen({super.key});
@@ -11,6 +12,8 @@ class price_screen extends StatefulWidget {
 }
 
 class _price_screenState extends State<price_screen> {
+using_api usapi= new using_api();
+
   String drope_down_menu = "RUP";
   /*DropdownMenuItem ddmil(List<String> cl){
 
@@ -120,7 +123,10 @@ class _price_screenState extends State<price_screen> {
         onSelectedItemChanged: (int value) {
           print(value);
         },
-        children: l);
+        children: l,
+      backgroundColor: Colors.lightBlue,
+
+    );
   }
 
   Widget find_device(){
@@ -138,6 +144,7 @@ class _price_screenState extends State<price_screen> {
 
   @override
   Widget build(BuildContext context) {
+    usapi.get_Data_api();
     return Scaffold(
       appBar: AppBar(
         title: Text("Coin Ticker "),
@@ -156,7 +163,7 @@ class _price_screenState extends State<price_screen> {
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 28),
                 child: Center(
                     child: Text(
-                  "1 BTC = ? USD",
+                  "1 BTC = ${usapi.rate.toInt()} USD",
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 )),
               ),
@@ -169,7 +176,8 @@ class _price_screenState extends State<price_screen> {
             alignment: Alignment.center,
             child:
             //easy way
-            (Platform.isAndroid)?android_Device():ios_device()
+            //(Platform.isAndroid)?android_Device():ios_device()
+            ios_device()
             //find_device()
             ,
           )

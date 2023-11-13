@@ -13,7 +13,10 @@ class price_screen extends StatefulWidget {
 
 class _price_screenState extends State<price_screen> {
 using_api usapi= new using_api();
-
+void initState(){
+  super.initState();
+  usapi.get_Data_api();
+}
   String drope_down_menu = "RUP";
   /*DropdownMenuItem ddmil(List<String> cl){
 
@@ -163,8 +166,8 @@ using_api usapi= new using_api();
                 padding:
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 28),
                 child: Center(
-                    child: Text(
-                  "1 BTC = ${usapi.rate.toInt()} USD",
+                    child: Text (
+                  "1 BTC = ${ usapi.rate.toInt()} USD",
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 )),
               ),
@@ -188,3 +191,6 @@ using_api usapi= new using_api();
   }
 }
 //ios now
+/*bronz level done !!
+
+i am facing issue regarding null value in 1 BTC=NULL USD so fixed it to asign defaul value to var rate=1 or 0 */

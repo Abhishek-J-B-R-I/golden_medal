@@ -3,9 +3,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class using_api{
-var rate=1.0;
+var rate;
+int? r;
 
-  Future<void> get_Data_api()async{
+ Future<int> get_Data_api()async{
     String uri='https://rest.coinapi.io/v1/exchangerate/BTC/USD?apikey=BEB225B6-0ABA-455E-A430-09B0A682856B';
     http.Response rs=await http.get(Uri.parse(uri));
 
@@ -16,10 +17,12 @@ var rate=1.0;
       rate= jsonDecode(rs.body)['rate'];
     print("rate: ${rate}");
    //return rate.toInt();
-
+r=rate.toInt();
+return r!;
     }
     else {
       print(rs.statusCode);
+      return 0;
     }
   }
 

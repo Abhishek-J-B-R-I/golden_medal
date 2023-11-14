@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'price_screen.dart';
-
+import 'loading_screen.dart';
 void main(){
   runApp(bitcoin());
 }
@@ -18,7 +18,7 @@ theme: ThemeData.dark().copyWith(
   appBarTheme: AppBarTheme(backgroundColor: Colors.lightBlue),
 
 ),
-      home: price_screen(),
+      home: loading_screen(),
     );
   }
 }

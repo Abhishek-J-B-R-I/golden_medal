@@ -4,19 +4,29 @@ import 'package:flutter/cupertino.dart';
 import 'dart:io' show Platform;
 import 'api_file.dart';
 
+
+
 class price_screen extends StatefulWidget {
-  const price_screen({super.key});
+ price_screen(this.rvalue);
+
+ final int rvalue;
 
   @override
   State<price_screen> createState() => _price_screenState();
 }
 
 class _price_screenState extends State<price_screen> {
+  String btccu="USD";
+  int? vvalue;
+  void updateui(){
+    vvalue=widget.rvalue;
+  }
+
 using_api usapi= new using_api();
-void initState(){
+/*void initState(){
   super.initState();
   usapi.get_Data_api();
-}
+}*/
   String drope_down_menu = "RUP";
   /*DropdownMenuItem ddmil(List<String> cl){
 
@@ -145,10 +155,19 @@ void initState(){
     }
   }
 
+Future<int> api_main()async{
+    using_api uip= new using_api();
+    int okay=await uip.get_Data_api();
+    print("apii vlaue: $okay");
+    return okay;
+  }
+
 
   @override
   Widget build(BuildContext context) {
+api_main();
     usapi.get_Data_api();
+updateui();
     return Scaffold(
       appBar: AppBar(
         title: Text("Coin Ticker "),
@@ -167,7 +186,7 @@ void initState(){
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 28),
                 child: Center(
                     child: Text (
-                  "1 BTC = ${ usapi.rate.toInt()} USD",
+                  "1 BTC = ${ vvalue} $btccu",
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 )),
               ),

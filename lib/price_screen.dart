@@ -205,59 +205,64 @@ usapi.get_Data_api('LTC',btccu);
         title: Text("Coin Ticker "),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(18, 2, 18, 2),
-            child: Card(
-              color: Colors.lightBlueAccent,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
-              child: Padding(
-                padding:
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(18, 18, 18, 0),
+                child: Card(
+                  color: Colors.lightBlueAccent,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Padding(
+                    padding:
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 28),
-                child: Center(
-                    child: Text (
-                  "1 BTC = ${ vvalue} $btccu",
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                )),
+                    child: Center(
+                        child: Text (
+                          "1 BTC = ${ vvalue} $btccu",
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        )),
+                  ),
+                ),
               ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(18, 3, 18, 3),
-            child: Card(
-              color: Colors.lightBlueAccent,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
-              child: Padding(
-                padding:
-                const EdgeInsets.symmetric(vertical: 15, horizontal: 28),
-                child: Center(
-                    child: Text (
-                      "1 ETH = ${ vvalue1} $btccu",
-                      style: TextStyle(fontSize: 20, color: Colors.white),
-                    )),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(18, 18, 18, 0),
+                child: Card(
+                  color: Colors.lightBlueAccent,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Padding(
+                    padding:
+                    const EdgeInsets.symmetric(vertical: 15, horizontal: 28),
+                    child: Center(
+                        child: Text (
+                          "1 ETH = ${ vvalue1} $btccu",
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        )),
+                  ),
+                ),
               ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(18, 3, 18, 3),
-            child: Card(
-              color: Colors.lightBlueAccent,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
-              child: Padding(
-                padding:
-                const EdgeInsets.symmetric(vertical: 15, horizontal: 28),
-                child: Center(
-                    child: Text (
-                      "1 LTC = ${ vvalue2} $btccu",
-                      style: TextStyle(fontSize: 20, color: Colors.white),
-                    )),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(18, 18, 18, 0),
+                child: Card(
+                  color: Colors.lightBlueAccent,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Padding(
+                    padding:
+                    const EdgeInsets.symmetric(vertical: 15, horizontal: 28),
+                    child: Center(
+                        child: Text (
+                          "1 LTC = ${ vvalue2} $btccu",
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        )),
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
+
           Container(
             height: 150,
             padding: EdgeInsets.only(bottom: 30),

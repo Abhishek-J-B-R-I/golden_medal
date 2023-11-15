@@ -7,9 +7,11 @@ import 'api_file.dart';
 
 String btccu="AUD";
 class price_screen extends StatefulWidget {
- price_screen(this.rvalue);
+ price_screen(this.rvalue,this.rvalue1,this.rvalue2);
 
  final int rvalue;
+ final int rvalue1;
+ final int rvalue2;
 
   @override
   State<price_screen> createState() => _price_screenState();
@@ -18,15 +20,19 @@ class price_screen extends StatefulWidget {
 class _price_screenState extends State<price_screen> {
 
   int? vvalue;
+  int? vvalue1;
+  int? vvalue2;
   @override
   void initState(){
     super.initState();
-    updateui(widget.rvalue);
+    updateui(widget.rvalue,widget.rvalue1,widget.rvalue2);
   }
-  void updateui(int vue){
+  void updateui(int vue,int vue1,int vue2){
 
     setState(() {
       vvalue=vue;
+      vvalue1=vue1;
+      vvalue2=vue2;
     });
   }
 
@@ -144,8 +150,10 @@ using_api usapi= new using_api();
         onSelectedItemChanged: (int value) {
           setState(() async{
             btccu=currency_list[value];
-            int rv=await usapi.get_Data_api(btccu);
-            updateui(rv);
+            int rv=await usapi.get_Data_api('BTC',btccu);
+            int rv1=await usapi.get_Data_api('ETH',btccu);
+            int rv2=await usapi.get_Data_api('LTC',btccu);
+            updateui(rv,rv1,rv2);
             //using_api(btccu);
           });
 
@@ -173,8 +181,12 @@ using_api usapi= new using_api();
 
 Future<int> api_main()async{
     using_api uip= new using_api();
-    int okay=await uip.get_Data_api(btccu);
-    print("apii vlaue: $okay");
+    int okay=await uip.get_Data_api('BTC',btccu);
+    int okay1=await uip.get_Data_api('ETH',btccu);
+    int okay2=await uip.get_Data_api('LTC',btccu);
+    print("BTC apii vlaue: $okay");
+    print("ETH apii vlaue: $okay1");
+    print("LTC apii vlaue: $okay2");
     return okay;
   }
 
@@ -182,17 +194,21 @@ Future<int> api_main()async{
   @override
   Widget build(BuildContext context) {
 api_main();
-    usapi.get_Data_api(btccu);
-//updateui();
+    usapi.get_Data_api('BTC',btccu);
+
+usapi.get_Data_api('ETH',btccu);
+
+usapi.get_Data_api('LTC',btccu);
+    //updateui();
     return Scaffold(
       appBar: AppBar(
         title: Text("Coin Ticker "),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.,
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(18, 18, 18, 18),
+            padding: const EdgeInsets.fromLTRB(18, 2, 18, 2),
             child: Card(
               color: Colors.lightBlueAccent,
               shape: RoundedRectangleBorder(
@@ -205,6 +221,40 @@ api_main();
                   "1 BTC = ${ vvalue} $btccu",
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 )),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(18, 3, 18, 3),
+            child: Card(
+              color: Colors.lightBlueAccent,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              child: Padding(
+                padding:
+                const EdgeInsets.symmetric(vertical: 15, horizontal: 28),
+                child: Center(
+                    child: Text (
+                      "1 ETH = ${ vvalue1} $btccu",
+                      style: TextStyle(fontSize: 20, color: Colors.white),
+                    )),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(18, 3, 18, 3),
+            child: Card(
+              color: Colors.lightBlueAccent,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              child: Padding(
+                padding:
+                const EdgeInsets.symmetric(vertical: 15, horizontal: 28),
+                child: Center(
+                    child: Text (
+                      "1 LTC = ${ vvalue2} $btccu",
+                      style: TextStyle(fontSize: 20, color: Colors.white),
+                    )),
               ),
             ),
           ),

@@ -14,10 +14,12 @@ class _loading_screenState extends State<loading_screen> {
 
   void main_api()async{
     using_api i= new using_api();
-    var currency_data_value=await i.get_Data_api('AUD');
+    var currency_data_value=await i.get_Data_api('BTC','AUD');
+    var currency_data_value1=await i.get_Data_api('ETH','AUD');
+    var currency_data_value2=await i.get_Data_api('LTC','AUD');
     print("currency: -------> $currency_data_value");
     Navigator.push(context, MaterialPageRoute(builder: (context){
-      return price_screen(currency_data_value);
+      return price_screen(currency_data_value,currency_data_value1,currency_data_value2);
     }));
   }
   @override

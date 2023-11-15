@@ -9,8 +9,8 @@ int? r;
 String apiid1='BEB225B6-0ABA-455E-A430-09B0A682856B';
 String apiid2='8497CCD2-039D-4462-A4FD-8166C65CDD1F';
 //String change_currency='USD';
- Future<int> get_Data_api(String change_currency)async{
-    String uri='https://rest.coinapi.io/v1/exchangerate/BTC/$change_currency?apikey=$apiid2';
+ Future<int> get_Data_api(String bitcoin,String change_currency)async{
+    String uri='https://rest.coinapi.io/v1/exchangerate/$bitcoin/$change_currency?apikey=$apiid2';
     http.Response rs=await http.get(Uri.parse(uri));
 
     print(rs.statusCode);

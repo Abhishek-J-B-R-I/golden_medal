@@ -5,7 +5,7 @@ import 'dart:io' show Platform;
 import 'api_file.dart';
 
 
-
+String btccu="AUD";
 class price_screen extends StatefulWidget {
  price_screen(this.rvalue);
 
@@ -16,10 +16,18 @@ class price_screen extends StatefulWidget {
 }
 
 class _price_screenState extends State<price_screen> {
-  String btccu="USD";
+
   int? vvalue;
-  void updateui(){
-    vvalue=widget.rvalue;
+  @override
+  void initState(){
+    super.initState();
+    updateui(widget.rvalue);
+  }
+  void updateui(int vue){
+
+    setState(() {
+      vvalue=vue;
+    });
   }
 
 using_api usapi= new using_api();
@@ -96,8 +104,8 @@ using_api usapi= new using_api();
     int i = 0;
     List<DropdownMenuItem<String>> dropdownItems = [
       DropdownMenuItem(
-        child: Text("RUP"),
-        value: "RUP",
+        child: Text(" "),
+        value: " ",
       ),
 
       // DropdownMenuItem(child:Text("${currency_list[i]}") ,value: "${currency_list[i]}",),
@@ -134,6 +142,14 @@ using_api usapi= new using_api();
     return CupertinoPicker(
         itemExtent: 32.0,
         onSelectedItemChanged: (int value) {
+          setState(() async{
+            btccu=currency_list[value];
+            int rv=await usapi.get_Data_api(btccu);
+            updateui(rv);
+            //using_api(btccu);
+          });
+
+
           print(value);
         },
         children: l,
@@ -157,7 +173,7 @@ using_api usapi= new using_api();
 
 Future<int> api_main()async{
     using_api uip= new using_api();
-    int okay=await uip.get_Data_api();
+    int okay=await uip.get_Data_api(btccu);
     print("apii vlaue: $okay");
     return okay;
   }
@@ -166,8 +182,8 @@ Future<int> api_main()async{
   @override
   Widget build(BuildContext context) {
 api_main();
-    usapi.get_Data_api();
-updateui();
+    usapi.get_Data_api(btccu);
+//updateui();
     return Scaffold(
       appBar: AppBar(
         title: Text("Coin Ticker "),

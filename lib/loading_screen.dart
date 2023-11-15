@@ -14,7 +14,7 @@ class _loading_screenState extends State<loading_screen> {
 
   void main_api()async{
     using_api i= new using_api();
-    var currency_data_value=await i.get_Data_api();
+    var currency_data_value=await i.get_Data_api('AUD');
     print("currency: -------> $currency_data_value");
     Navigator.push(context, MaterialPageRoute(builder: (context){
       return price_screen(currency_data_value);
